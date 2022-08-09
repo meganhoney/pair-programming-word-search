@@ -3,8 +3,9 @@ const assert = chai.assert;
 
 const wordSearch = require('../wordsearch.js')
 
+
 describe("#wordSearch()", function() {
-  it("should return false if the word is not present horizontally", function() {
+  it("should return false if the word is not present", function() {
     const result = wordSearch([
       ['A', 'W', 'C', 'F', 'Q', 'U', 'A', 'L'],
       ['S', 'E', 'I', 'N', 'F', 'E', 'L', 'D'],
@@ -36,23 +37,7 @@ describe("#wordSearch()", function() {
     assert.isTrue(result);
   });
 
-  it("should return true if the word is present vertically", function() {
-    const result = wordSearch([
-      ['A', 'W', 'C', 'F', 'Q', 'U', 'A', 'L'],
-      ['S', 'E', 'I', 'N', 'F', 'E', 'L', 'D'],
-      ['Y', 'F', 'E', 'F', 'Q', 'U', 'A', 'L'],
-      ['H', 'M', 'L', 'T', 'E', 'V', 'R', 'G'],
-      ['W', 'H', 'A', 'S', 'Y', 'E', 'R', 'L'],
-      ['B', 'F', 'I', 'E', 'N', 'E', 'Y', 'B'],
-      ['U', 'B', 'N', 'W', 'A', 'P', 'A', 'I'],
-      ['O', 'D', 'E', 'A', 'K', 'U', 'A', 'S'],
-      ['E', 'Z', 'K', 'F', 'Q', 'U', 'A', 'L'],
-    ], 'ELAINE')
-
-    assert.isTrue(result);
-  });
-
-  it("should return false if the word is not present vertically", function() {
+  it("should return true if word is present vertically", function() {
     const result = wordSearch([
       ['A', 'W', 'C', 'F', 'Q', 'U', 'A', 'L'],
       ['S', 'E', 'I', 'N', 'F', 'E', 'L', 'D'],
@@ -63,9 +48,9 @@ describe("#wordSearch()", function() {
       ['U', 'B', 'T', 'W', 'A', 'P', 'A', 'I'],
       ['O', 'D', 'C', 'A', 'K', 'U', 'A', 'S'],
       ['E', 'Z', 'K', 'F', 'Q', 'U', 'A', 'L'],
-    ], 'ELAINE')
+    ], 'VEEP')
 
-    assert.isFalse(result);
+    assert.isTrue(result);
   });
 
   it("should return false if given an empty array", function() {
@@ -105,4 +90,5 @@ describe("#wordSearch()", function() {
 
     assert.isFalse(result); 
   });
+
 });
