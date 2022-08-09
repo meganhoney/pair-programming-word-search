@@ -1,38 +1,38 @@
-const verticalArray = function (letters) {
-  
-    let newArray = [];
-    let count = 0;
-  
-    for(let i = 0; i < letters[i].length; i++) {
-      let newString = "";
+const verticalArray = function(letters) {
+  let newArr = [];
+  let index = 0;
+
+  for(let i = 0; i < letters[i].length; i++) {
+      let verticalWord = '';
       for (let j = 0; j < letters.length; j++) {
-        newString += letters[j][count];
-        
+          verticalWord += (letters[j][index]);
       }
-      newArray.push(newString);
-      count++;  
-    }
-    
-    return newArray;
-  };
+      newArr.push(verticalWord);
+      index++;
+  }
+  return newArr;
+};
 
-const wordSearch = (letters, word) => { 
-    // should return false if given empty array, or a one letter word or word is not a string
-    if (letters.length === 0 || word.length < 2 || !typeof word === 'string') {
-        return false;
-    }
-    const horizontalJoin = letters.map(ls => ls.join(''))
-    for (l of horizontalJoin) {
-        if (l.includes(word)) return true
-    }
-
-    const verticalJoin = verticalArray(letters)
-
-    for (l of verticalJoin) {
-        if (l.includes(word)) return true
-    }
-    
+const wordSearch = (letters, word) => {
+  if (letters.length === 0 || word.length < 2 || !typeof word === 'string') {
     return false;
-}
+  }
+  const horizontalJoin = letters.map(ls => ls.join(''))
+  
+  // joining the horizontal indexes together within each array.
+  for (l of horizontalJoin) {
+      if (l.includes(word)) return true
+  }
+  
+  const verticalJoin = verticalArray(letters)
+
+  for (l of verticalJoin) {
+    if (l.includes(word)) {
+        return true;
+    }
+  }
+  return false;
+};
+
 
 module.exports = wordSearch
